@@ -1,26 +1,23 @@
-﻿using NLog;
+﻿using AventStack.ExtentReports;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System.Reflection;
-using UI_Automation.Util;
 using TestContext = NUnit.Framework.TestContext;
 
 namespace UI_Automation.Base
 {
     [TestFixture]
-    public class TestBase
+    public class TestBase : Base
     {
-        public static Dictionary<string, string> configData = DataReader.getAutomationConfigData();
-        public Dictionary<string, string> dataSet = DataReader.getData(configData["Env"]);
-        protected static Logger logger = LogManager.GetCurrentClassLogger();
-        public IWebDriver GetDriver;
+        protected IWebDriver GetDriver;
 
         [SetUp]
         public void StartTest()
         {
+            Test = Extent.CreateTest(TestContext.CurrentContext.Test.Name);
             StartUp();
             NavigateToURL();
         }
@@ -28,12 +25,36 @@ namespace UI_Automation.Base
         [TearDown]
         public void EndTest()
         {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.Message)
+            ? ""
+            : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
+            Status logstatus;
+
+            switch (status)
+            {
+                case TestStatus.Failed:
+                    logstatus = Status.Fail;
+                    break;
+                case TestStatus.Inconclusive:
+                    logstatus = Status.Warning;
+                    break;
+                case TestStatus.Skipped:
+                    logstatus = Status.Skip;
+                    break;
+                default:
+                    logstatus = Status.Pass;
+                    break;
+            }
+
+            Test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
             try
             {
                 if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
                 {
                     logger.Info(TestContext.CurrentContext.Test.MethodName + ": Failed");
-                    CaptureScreenShots();
+                    Test.Log(logstatus, Test.AddScreenCaptureFromPath(CaptureScreenShots())
+                        + " test failed");
                 }
                 else
                 {
@@ -46,10 +67,9 @@ namespace UI_Automation.Base
             }
             finally
             {
+                Extent.Flush();
                 QuitWebdriver();
-                logger.Info(TestContext.CurrentContext.Test.MethodName + ": Completed");
             }
-
         }
         private void StartUp()
         {
@@ -63,7 +83,6 @@ namespace UI_Automation.Base
                 {
                     GetDriver = new FirefoxDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
                 }
-
                 logger.Info("Scuessfully initiate {driver} web driver", configData["Browser"]);
                 logger.Info(TestContext.CurrentContext.Test.FullName + ": Started");
             }
@@ -90,15 +109,17 @@ namespace UI_Automation.Base
             logger.Info("Scuessfully quit {driver} web driver", configData["Browser"]);
         }
 
-        private void CaptureScreenShots()
+        private string CaptureScreenShots()
         {
             try
             {
-                string FileLocation = configData["ScreenShotLocation"] +
-                DateTime.Now.ToString("MMMMdd-HHmm") +
-                TestContext.CurrentContext.Test.MethodName + ".jpg";
+                string FileLocation = ScreenShotFilePath 
+                                        + "\\" 
+                                        + DateTime.Now.ToString("MMMMdd-HHmm")
+                                        + TestContext.CurrentContext.Test.MethodName + ".jpg";
                 Screenshot TakeScreenShot = ((ITakesScreenshot)GetDriver).GetScreenshot();
                 TakeScreenShot.SaveAsFile(FileLocation);
+                return FileLocation;
             }
             catch (Exception ex)
             {
