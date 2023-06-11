@@ -6,6 +6,7 @@ using UI_Automation.PageObjects;
 namespace UI_Automation.Tests
 {
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class LoginTest : TestActivityBase
     {
          [TestCase (TestName = "VerifyLoginForValidTest")]
@@ -20,7 +21,7 @@ namespace UI_Automation.Tests
             , TestName = "VerifyFailedToLoginForInvalidPasswordTest" )]
         [TestCase("InvaldUser", "admin123"
             ,TestName = "VerifyFailedToLoginForInvalidUserNameTest")]
-        [Parallelizable(ParallelScope.All)]
+        
         public void VerifyLoginForInvalidDataTest(String userName, String password)
         {
             LoginPage = new LoginPage(GetDriver);

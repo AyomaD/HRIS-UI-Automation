@@ -8,12 +8,10 @@ namespace UI_Automation.PageObjects
 {
     public class LoginPage : BasePage
     {
-        [FindsBy(How = How.Name, Using = "username")]
+        [FindsBy(How = How.Name, Using = "username1")]
         private IWebElement txtUserName;
         [FindsBy(How = How.Name, Using = "password")]
         private IWebElement txtPassword;
-        [FindsBy(How = How.XPath, Using = "passwo//p[text()='Invalid credentials']")]
-        private IWebElement txtError;
         [FindsBy(How = How.XPath, Using = "//button[text()=' Login ']")]
         private IWebElement btnLogin;
 

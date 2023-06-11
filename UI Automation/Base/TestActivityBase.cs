@@ -1,7 +1,9 @@
-﻿using UI_Automation.PageObjects;
+﻿using NUnit.Framework;
+using UI_Automation.PageObjects;
 
 namespace UI_Automation.Base
 {
+    [TestFixture]
     public class TestActivityBase : TestBase
     {
         protected LoginPage LoginPage;
