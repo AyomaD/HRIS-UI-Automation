@@ -8,7 +8,7 @@ namespace UI_Automation.PageObjects
 {
     public class LoginPage : BasePage
     {
-        [FindsBy(How = How.Name, Using = "username1")]
+        [FindsBy(How = How.Name, Using = "username")]
         private IWebElement txtUserName;
         [FindsBy(How = How.Name, Using = "password")]
         private IWebElement txtPassword;
