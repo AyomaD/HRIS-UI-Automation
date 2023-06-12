@@ -6,22 +6,21 @@ using UI_Automation.PageObjects;
 namespace UI_Automation.Tests
 {
     [TestFixture]
-    [Parallelizable(scope: ParallelScope.Self)]
+    [Parallelizable]
     public class LoginTest : TestActivityBase
     {
-         [TestCase (TestName = "VerifyLoginForValidTest")]
+        [TestCase(TestName = "VerifyLoginForValidTest")]
         public void VerifyLoginForValidDataTest()
         {
-            NavigationPage = Login(); 
-            Assert.IsTrue(NavigationPage.IsLogoIsVisible(),"Logo should be displayed once sucessufully logged into system ");
+            NavigationPage = Login();
+            Assert.IsTrue(NavigationPage.IsLogoIsVisible(), "Logo should be displayed once sucessufully logged into system ");
         }
 
-        [Test]
         [TestCase("Admin", "invalidPassword"
-            , TestName = "VerifyFailedToLoginForInvalidPasswordTest" )]
+            , TestName = "VerifyFailedToLoginForInvalidPasswordTest")]
         [TestCase("InvaldUser", "admin123"
-            ,TestName = "VerifyFailedToLoginForInvalidUserNameTest")]
-        
+            , TestName = "VerifyFailedToLoginForInvalidUserNameTest")]
+
         public void VerifyLoginForInvalidDataTest(String userName, String password)
         {
             LoginPage = new LoginPage(GetDriver);

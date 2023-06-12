@@ -61,6 +61,15 @@ namespace UI_Automation.TestData {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 16.
+        /// </summary>
+        internal static string Leave_HolyDayCount {
+            get {
+                return ResourceManager.GetString("Leave_HolyDayCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index.
         /// </summary>
         internal static string LoggedInURL {
@@ -72,9 +81,18 @@ namespace UI_Automation.TestData {
         /// <summary>
         ///   Looks up a localized string similar to admin123.
         /// </summary>
-        internal static string PassWord {
+        internal static string Login_PassWord {
             get {
-                return ResourceManager.GetString("PassWord", resourceCulture);
+                return ResourceManager.GetString("Login_PassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin.
+        /// </summary>
+        internal static string Login_UserName {
+            get {
+                return ResourceManager.GetString("Login_UserName", resourceCulture);
             }
         }
         
@@ -84,15 +102,6 @@ namespace UI_Automation.TestData {
         internal static string URL {
             get {
                 return ResourceManager.GetString("URL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Admin.
-        /// </summary>
-        internal static string UserName {
-            get {
-                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }

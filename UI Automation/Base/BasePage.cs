@@ -28,5 +28,6 @@ namespace UI_Automation.Base
         {
             ((IJavaScriptExecutor)WebDriver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
+
     }
 }

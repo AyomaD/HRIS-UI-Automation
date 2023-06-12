@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TestData\ConfigData.Designer.cs">
+    <Compile Update="Config\ConfigData.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ConfigData.resx</DependentUpon>
@@ -48,7 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="TestData\ConfigData.resx">
+    <EmbeddedResource Update="Config\ConfigData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ConfigData.Designer.cs</LastGenOutput>
     </EmbeddedResource>

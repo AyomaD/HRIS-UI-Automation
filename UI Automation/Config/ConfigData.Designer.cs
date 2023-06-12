@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI_Automation.TestData {
+namespace UI_Automation.Config {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace UI_Automation.TestData {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UI_Automation.TestData.ConfigData", typeof(ConfigData).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UI_Automation.Config.ConfigData", typeof(ConfigData).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,24 +75,6 @@ namespace UI_Automation.TestData {
         internal static string Env {
             get {
                 return ResourceManager.GetString("Env", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to local.
-        /// </summary>
-        internal static string RunningLocation {
-            get {
-                return ResourceManager.GetString("RunningLocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to D:\\img\\.
-        /// </summary>
-        internal static string ScreenShotLocation {
-            get {
-                return ResourceManager.GetString("ScreenShotLocation", resourceCulture);
             }
         }
     }

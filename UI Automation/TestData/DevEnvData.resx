@@ -117,16 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Leave_HolyDayCount" xml:space="preserve">
+    <value>16</value>
+  </data>
   <data name="LoggedInURL" xml:space="preserve">
     <value>https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index</value>
   </data>
-  <data name="PassWord" xml:space="preserve">
+  <data name="Login_PassWord" xml:space="preserve">
     <value>admin123</value>
+  </data>
+  <data name="Login_UserName" xml:space="preserve">
+    <value>Admin</value>
   </data>
   <data name="URL" xml:space="preserve">
     <value>https://opensource-demo.orangehrmlive.com/web/index.php/auth/login</value>
-  </data>
-  <data name="UserName" xml:space="preserve">
-    <value>Admin</value>
   </data>
 </root>

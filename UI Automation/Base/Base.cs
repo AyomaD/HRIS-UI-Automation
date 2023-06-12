@@ -2,7 +2,7 @@
 using AventStack.ExtentReports.Reporter;
 using NLog;
 using NUnit.Framework;
-using UI_Automation.Util;
+using UI_Automation.Config;
 
 namespace UI_Automation.Base
 {
