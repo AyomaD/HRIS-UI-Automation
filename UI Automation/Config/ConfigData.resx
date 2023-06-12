@@ -123,10 +123,4 @@
   <data name="Env" xml:space="preserve">
     <value>test</value>
   </data>
-  <data name="RunningLocation" xml:space="preserve">
-    <value>local</value>
-  </data>
-  <data name="ScreenShotLocation" xml:space="preserve">
-    <value>D:\\img\\</value>
-  </data>
 </root>

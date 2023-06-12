@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
-using System.Data;
 using UI_Automation.Base;
 
 namespace UI_Automation.PageObjects

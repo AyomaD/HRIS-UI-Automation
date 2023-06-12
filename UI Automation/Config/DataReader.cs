@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Resources;
 
-namespace UI_Automation.Util
+namespace UI_Automation.Config
 {
     class DataReader
     {
@@ -35,7 +35,7 @@ namespace UI_Automation.Util
             ResourceSet resourceSet = null;
             Dictionary<string, string> dataSet = new Dictionary<string, string>();
 
-            ResourceManager resourceManager = new ResourceManager(typeof(TestData.ConfigData));
+            ResourceManager resourceManager = new ResourceManager(typeof(ConfigData));
             resourceSet = resourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
             foreach (DictionaryEntry entry in resourceSet)
             {
